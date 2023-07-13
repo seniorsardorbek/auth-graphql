@@ -1,0 +1,40 @@
+type Query {
+  items: [Item!]!
+  item(id: ID!): Item!
+  item_sizes: [ItemSize]
+}
+
+type Mutation {
+  createItem(input: CreateItemInput!): Item!
+  createItemSize(input:CreateItemSizeInput!): ItemSize!
+  updateItem(id: ID!, input: UpdateItemInput!): Item!
+  removeItem(id: ID!): Item!
+}
+
+type Item {
+  id: ID!
+  type: String
+  sizes: [ItemSize!]!
+}
+
+type ItemSize {
+  id: ID!
+  item_id: Item!
+  price: Float
+  string: String
+  photo: String
+  created_at: String
+  updated_at: String
+}
+
+input CreateItemInput {
+  type: String!
+}
+input CreateItemSizeInput {
+  item_id: Int!
+  price: Float
+  string: String
+}
+input UpdateItemInput {
+  type: String!
+}
